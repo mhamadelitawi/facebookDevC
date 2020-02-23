@@ -4,11 +4,8 @@ import com.example.facebook.database.mySQL.UserManagerMySql;
 import com.example.facebook.manager.ControllerManager;
 import com.example.facebook.manager.DatabaseManager;
 import com.example.facebook.model.User;
-import com.example.facebook.youtube.Quickstart;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.example.facebook.youtube.Auth;
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.Channel;
-import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.PlaylistListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +48,7 @@ public class ApiControllers {
             part = "snippet,contentDetails,statistics,brandingSettings";
 
 
-         YouTube youtubeService = Quickstart.getYouTubeService();
+         YouTube youtubeService = Auth.getYouTubeService();
 //
 //        YouTube.Channels.List request = youtubeService.channels()
 //                .list(part);

@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class Quickstart {
+public class Auth {
 
     public static String jsonFileLocation = "/static/client_secret.json";
 
@@ -51,16 +51,18 @@ public class Quickstart {
 
 
 
-
     public static Credential authorize() throws IOException, GeneralSecurityException {
 
 
-        HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        if(HTTP_TRANSPORT == null || DATA_STORE_FACTORY == null )
+        {
+            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        }
 
 
         // Load client secrets.
-        InputStream in = Quickstart.class.getResourceAsStream(jsonFileLocation);
+        InputStream in = Auth.class.getResourceAsStream(jsonFileLocation);
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
         // Build flow and trigger user authorization request.
@@ -82,6 +84,7 @@ public class Quickstart {
         return new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
+
     }
 
 
@@ -91,7 +94,7 @@ public class Quickstart {
 
 
     public static void testYoutube() throws IOException, GeneralSecurityException {
-        YouTube youtube = Quickstart.getYouTubeService();
+        YouTube youtube = Auth.getYouTubeService();
         try {
             YouTube.Channels.List channelsListByUsernameRequest = youtube.channels().list("snippet,contentDetails,statistics");
             channelsListByUsernameRequest.setForUsername("GoogleDevelopers"); //GoogleDevelopers
