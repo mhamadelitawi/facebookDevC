@@ -3,7 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-src/main/resources/static/client_secret_723799157699-0cjalt5id8n4davc2d4p0s2a97qh93d6.apps.googleusercontent.com.json
+src/main/resources/static/client_secret.json
+src/main/resources/static/client_secret1.json
 
 ### STS ###
 .apt_generated
