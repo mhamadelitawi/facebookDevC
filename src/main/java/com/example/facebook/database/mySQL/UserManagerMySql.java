@@ -4,13 +4,9 @@ package com.example.facebook.database.mySQL;
 import com.example.facebook.manager.UserManager;
 import com.example.facebook.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import static com.example.facebook.Utils.Tools.hashToSHA1;
 
 @Service
 public class UserManagerMySql implements UserManager {

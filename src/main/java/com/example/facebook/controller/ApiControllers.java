@@ -31,7 +31,7 @@ public class ApiControllers {
     @GetMapping("/register")
     @ResponseBody
     public User register(@RequestParam(name="username", required=true) String username ,
-                       @RequestParam(name="password", required=true) String password)
+                         @RequestParam(name="password", required=true) String password)
     {
         System.out.println("test");
 
