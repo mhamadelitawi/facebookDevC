@@ -5,11 +5,20 @@ import java.util.List;
 public class PlayList {
 
     private Integer id;
+    private String title;
 
     private List<Video> videoList;
 
 
     public PlayList() {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getId() {

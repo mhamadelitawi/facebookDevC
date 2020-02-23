@@ -1,4 +1,4 @@
-package com.example.facebook.database;
+package com.example.facebook.manager;
 
 public interface Database {
 
