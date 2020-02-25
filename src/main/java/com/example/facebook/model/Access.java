@@ -3,7 +3,7 @@ package com.example.facebook.model;
 public class Access {
 
     private Integer id;
-    private Integer userId;
+    private User user;
     private PlayList playlistId;
     private AccessType type;
 
@@ -19,14 +19,13 @@ public class Access {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public PlayList getPlaylistId() {
         return playlistId;

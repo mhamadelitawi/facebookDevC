@@ -1,6 +1,7 @@
 package com.example.facebook.database.mySQL;
 
 
+import com.example.facebook.database.mySQL.Mappers.UserMapper;
 import com.example.facebook.manager.UserManager;
 import com.example.facebook.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,23 @@ public class UserManagerMySql implements UserManager {
 
     @Override
     public int createUser(String username, String password) {
-        return jdbcTemplate.update("insert into user (username, password) values(?,?) ", username, password  );
+        return jdbcTemplate.update("insert into users (username, password) values(?,?) ", username, password  );
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return jdbcTemplate.queryForObject("select * from user where username = ?",  new Object[]{username} , new UserMapper());
+        return jdbcTemplate.queryForObject("select * from users where username = ?",  new Object[]{username} , new UserMapper());
     }
 
     @Override
     public User getUserByUsernameAndPassword(String username , String password) {
-        return jdbcTemplate.queryForObject("select * from user where username = ? and password = ? ",  new Object[]{username , password} , new UserMapper());
+        return jdbcTemplate.queryForObject("select * from users where username = ? and password = ? ",  new Object[]{username , password} , new UserMapper());
     }
+
+
+
+
+
+
 
 }

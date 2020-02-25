@@ -13,6 +13,11 @@ public class PlayList {
     public PlayList() {
     }
 
+    public PlayList(Integer id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }

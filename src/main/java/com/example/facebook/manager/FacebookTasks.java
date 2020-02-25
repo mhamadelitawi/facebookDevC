@@ -14,7 +14,7 @@ public interface FacebookTasks {
 
     public PlayList getPlayList(User user);
 
-    public PlayList createPlayList(User user, List<Video> videos);
+    public PlayList createPlayList(Integer userId, String title);
 
     public User signIn(String username , String password);
 

@@ -1,10 +1,11 @@
-package com.example.facebook.database.mySQL;
+package com.example.facebook.database.mySQL.Mappers;
 
 import com.example.facebook.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class UserMapper implements RowMapper<User> {
 

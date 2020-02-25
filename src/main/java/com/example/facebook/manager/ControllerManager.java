@@ -33,8 +33,9 @@ public class ControllerManager implements FacebookTasks {
     }
 
     @Override
-    public PlayList createPlayList(User user, List<Video> videos) {
-        return null;
+    public PlayList createPlayList(Integer userId , String title )
+    {
+       return databaseManager.playListManager.createPlaylist(  title ,   userId);
     }
 
     @Override

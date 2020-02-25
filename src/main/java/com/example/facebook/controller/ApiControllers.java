@@ -3,10 +3,16 @@ package com.example.facebook.controller;
 import com.example.facebook.database.mySQL.UserManagerMySql;
 import com.example.facebook.manager.ControllerManager;
 import com.example.facebook.manager.DatabaseManager;
+import com.example.facebook.manager.PlayListManager;
+import com.example.facebook.model.PlayList;
 import com.example.facebook.model.User;
+import com.example.facebook.youtube.ApiExample;
 import com.example.facebook.youtube.Auth;
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistListResponse;
+import com.google.api.services.youtube.model.PlaylistSnippet;
+import com.google.api.services.youtube.model.PlaylistStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +21,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
+
+import static com.example.facebook.youtube.PlaylistUpdates.fullTest;
 
 @Controller
 public class ApiControllers {
 
     @Autowired
     UserManagerMySql userManagerMySql;
+
+    @Autowired
+    PlayListManager playListManager;
 
 
     @GetMapping("/test")
@@ -80,6 +92,30 @@ public class ApiControllers {
         return response.toString();
 
     }
+
+
+
+
+
+
+
+
+    @GetMapping("/createPlayList")
+    @ResponseBody
+    public PlayList createPlayList(
+            @RequestParam(name="title", required=false) String title,
+            @RequestParam(name="userId", required=false) Integer userId
+    )
+            throws GeneralSecurityException, IOException {
+
+        ControllerManager manager = new ControllerManager( new DatabaseManager( playListManager )  );
+        PlayList playList =  manager.createPlayList(  userId , title);
+
+        return playList ; //response.toString();
+
+    }
+
+
 
 
     @GetMapping("/register")

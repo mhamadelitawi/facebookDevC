@@ -29,24 +29,45 @@ public class Auth {
     public static String jsonFileLocation = "/static/client_secret.json";
 
     /** Application name. */
-    private static final String APPLICATION_NAME = "API Sample";
+    public static final String APPLICATION_NAME = "API Sample";
 
     /** Directory to store user credentials for this application. */
-    private static final java.io.File DATA_STORE_DIR = new java.io.File( System.getProperty("user.home"), ".credentials/youtube-java-quickstart");
+   // public static final java.io.File DATA_STORE_DIR = new java.io.File( System.getProperty("user.home"), ".credentials/youtube-java-quickstart");
 
     /** Global instance of the {@link FileDataStoreFactory}. */
-    private static FileDataStoreFactory DATA_STORE_FACTORY;
+    public static FileDataStoreFactory DATA_STORE_FACTORY;
 
     /** Global instance of the JSON factory. */
-    private static final JsonFactory JSON_FACTORY =
+    public static final JsonFactory JSON_FACTORY =
         JacksonFactory.getDefaultInstance();
 
     /** Global instance of the HTTP transport. */
-    private static HttpTransport HTTP_TRANSPORT;
+    public static HttpTransport HTTP_TRANSPORT;
 
 
-    private static final List<String> SCOPES =
-        Arrays.asList(YouTubeScopes.YOUTUBE_READONLY);
+    public static final List<String> SCOPES = Arrays.asList(YouTubeScopes.YOUTUBE_FORCE_SSL); //YouTubeScopes.YOUTUBE_READONLY
+            //Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
+
+
+//    /** Manage your YouTube account. */
+//    public static final String YOUTUBE = "https://www.googleapis.com/auth/youtube";
+//
+//    /** See, edit, and permanently delete your YouTube videos, ratings, comments and captions. */
+//    public static final String YOUTUBE_FORCE_SSL = "https://www.googleapis.com/auth/youtube.force-ssl";
+//
+//    /** View your YouTube account. */
+//    public static final String YOUTUBE_READONLY = "https://www.googleapis.com/auth/youtube.readonly";
+//
+//    /** Manage your YouTube videos. */
+//    public static final String YOUTUBE_UPLOAD = "https://www.googleapis.com/auth/youtube.upload";
+//
+//    /** View and manage your assets and associated content on YouTube. */
+//    public static final String YOUTUBEPARTNER = "https://www.googleapis.com/auth/youtubepartner";
+//
+//    /** View private information of your YouTube channel relevant during the audit process with a YouTube partner. */
+//    public static final String YOUTUBEPARTNER_CHANNEL_AUDIT = "https://www.googleapis.com/auth/youtubepartner-channel-audit";
+
+
 
 
 
@@ -57,7 +78,7 @@ public class Auth {
         if(HTTP_TRANSPORT == null || DATA_STORE_FACTORY == null )
         {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        //    DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
         }
 
 
