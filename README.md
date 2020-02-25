@@ -7,6 +7,8 @@ to test this application, use your own google client_secret.
 Put in in /src/main/resources/static/ or change jsonFileLocation parameter in Auth class
 
 
+Database 
+
 N.B: Tested with java 11
 
 

@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "e44a9109-4d38-4b0b-b7f9-edcdfaf0097d",
+		"name": "facebookDevC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"test"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youTubeTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/youTubeTest?part=snippet&channelId=UCm-MDGAMQxN2sc38fOBC7mA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"youTubeTest"
+					],
+					"query": [
+						{
+							"key": "isMine",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "channelId",
+							"value": "UCm-MDGAMQxN2sc38fOBC7mA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPlayList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/createPlayList?title=tessttt&userId=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createPlayList"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "tessttt"
+						},
+						{
+							"key": "userId",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPlayList Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/grantAccess?playListId=7&userId=4&grant=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"grantAccess"
+					],
+					"query": [
+						{
+							"key": "playListId",
+							"value": "7"
+						},
+						{
+							"key": "userId",
+							"value": "4"
+						},
+						{
+							"key": "grant",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signIn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/signIn?username=mhamad&password=itawi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signIn"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "mhamad"
+						},
+						{
+							"key": "password",
+							"value": "itawi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/register?username=mhamad&password=itawi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "mhamad"
+						},
+						{
+							"key": "password",
+							"value": "itawi"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
