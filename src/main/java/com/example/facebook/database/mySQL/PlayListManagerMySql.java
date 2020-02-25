@@ -73,5 +73,30 @@ public class PlayListManagerMySql implements PlayListManager {
        return new PlayList(keyId , title);
     }
 
+    @Override
+    public void grantAccess(Integer playListId, Integer user) {
+
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(
+                    "insert into access(type , user_id , playlist_id ) values( '"  + AccessType.GRANT.toString() +"' , ? , ? )" );
+            ps.setInt(1, user);
+            ps.setInt(2, playListId);
+
+            return ps;
+        });
+
+
+    }
+
+    @Override
+    public void removeAccess(Integer playListId, Integer userId) {
+         jdbcTemplate.update(
+                "update access set type = '"+AccessType.DENY.toString()+"' where user_id = ? and playlist_id = ? and type <> '"
+                        +AccessType.OWNER.toString()+"'",
+                userId, playListId);
+
+    }
+
+
 
 }

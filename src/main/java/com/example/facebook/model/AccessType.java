@@ -3,7 +3,7 @@ package com.example.facebook.model;
 public enum AccessType {
 
     OWNER("OWNER"),
-    GRANTED("GRANTED"),
+    GRANT("GRANT"),
     DENY("DENY");
 
     private String name;

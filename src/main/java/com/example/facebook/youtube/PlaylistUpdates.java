@@ -6,6 +6,7 @@ import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInsta
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -14,6 +15,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.DataStore;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.*;
 import com.google.common.collect.Lists;
 
@@ -21,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.security.GeneralSecurityException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -77,18 +80,21 @@ public class PlaylistUpdates {
     }
 
 
-    public static void fullTest() {
+    public static void addPlayListTest() throws GeneralSecurityException, IOException {
+
+
 
         // This OAuth 2.0 access scope allows for full read/write access to the
         // authenticated user's account.
-        List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");
+        List<String> scopes = Lists.newArrayList(YouTubeScopes.YOUTUBE , YouTubeScopes.YOUTUBE_FORCE_SSL ); //"https://www.googleapis.com/auth/youtube"
 
+        HttpTransport HTTP_TRANSPORT  = GoogleNetHttpTransport.newTrustedTransport() ;
         try {
             // Authorize the request.
             Credential credential = authorize(scopes, "playlistupdates");
 
             // This object is used to make YouTube Data API requests.
-            youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+            youtube = new YouTube.Builder( HTTP_TRANSPORT , Auth.JSON_FACTORY, credential)
                     .setApplicationName("youtube-cmdline-playlistupdates-sample")
                     .build();
 

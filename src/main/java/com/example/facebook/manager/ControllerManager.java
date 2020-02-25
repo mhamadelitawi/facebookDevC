@@ -1,5 +1,6 @@
 package com.example.facebook.manager;
 
+import com.example.facebook.model.AccessType;
 import com.example.facebook.model.PlayList;
 import com.example.facebook.model.User;
 import com.example.facebook.model.Video;
@@ -43,6 +44,15 @@ public class ControllerManager implements FacebookTasks {
     {
         password = hashToSHA1(password);
         return databaseManager.userManager.getUserByUsernameAndPassword( username , password);
+    }
+
+    @Override
+    public void grantAccess(Integer playListId, Integer userId, AccessType type) {
+
+        if(AccessType.GRANT.equals(type))
+             databaseManager.playListManager.grantAccess( playListId, userId);
+        else
+            databaseManager.playListManager.removeAccess( playListId, userId);
     }
 
 

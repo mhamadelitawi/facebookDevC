@@ -1,5 +1,6 @@
 package com.example.facebook.manager;
 
+import com.example.facebook.model.AccessType;
 import com.example.facebook.model.PlayList;
 import com.example.facebook.model.User;
 import com.example.facebook.model.Video;
@@ -17,5 +18,7 @@ public interface FacebookTasks {
     public PlayList createPlayList(Integer userId, String title);
 
     public User signIn(String username , String password);
+
+    public void grantAccess(Integer playListId , Integer user , AccessType type);
 
 }

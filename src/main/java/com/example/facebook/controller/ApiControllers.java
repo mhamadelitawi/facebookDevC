@@ -4,10 +4,11 @@ import com.example.facebook.database.mySQL.UserManagerMySql;
 import com.example.facebook.manager.ControllerManager;
 import com.example.facebook.manager.DatabaseManager;
 import com.example.facebook.manager.PlayListManager;
+import com.example.facebook.model.AccessType;
 import com.example.facebook.model.PlayList;
 import com.example.facebook.model.User;
-import com.example.facebook.youtube.ApiExample;
 import com.example.facebook.youtube.Auth;
+import com.example.facebook.youtube.PlaylistUpdates;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistListResponse;
@@ -21,9 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.Arrays;
 
-import static com.example.facebook.youtube.PlaylistUpdates.fullTest;
 
 @Controller
 public class ApiControllers {
@@ -86,8 +85,6 @@ public class ApiControllers {
         PlaylistListResponse response = request.execute();
 
 
-
-
         System.out.println(response);
         return response.toString();
 
@@ -95,6 +92,41 @@ public class ApiControllers {
 
 
 
+
+    @GetMapping("/grantAccess")
+    @ResponseBody
+    public Boolean grantAccess(
+            @RequestParam(name="playListId", required=true) Integer playListId,
+            @RequestParam(name="userId", required=true) Integer userId,
+            @RequestParam(name="grant", required=false) Boolean grant
+    )
+            throws GeneralSecurityException, IOException {
+
+        AccessType type;
+        type = (grant == null || !grant) ? AccessType.DENY : AccessType.GRANT;
+
+        ControllerManager manager = new ControllerManager( new DatabaseManager( playListManager )  );
+        manager.grantAccess( playListId,  userId,  type);
+
+        return true ; //response.toString();
+
+    }
+
+
+
+
+
+
+    @GetMapping("/addPlaylistYoutube")
+    @ResponseBody
+    public PlayList addPlaylistYoutube(
+    )
+            throws GeneralSecurityException, IOException {
+
+        PlaylistUpdates.addPlayListTest();
+        return null ; //response.toString();
+
+    }
 
 
 
